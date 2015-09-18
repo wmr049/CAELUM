@@ -87,9 +87,9 @@ public class ContatoDao {
 		}
 	}
 
-	public void remove(Contato contato) {
+	public void exclui(Contato contato) {
 		try {
-			PreparedStatement stmt = connection.prepareStatement("delete"
+			PreparedStatement stmt = connection.prepareStatement("delete "
 					+ "from contatos where id=?");
 			stmt.setLong(1, contato.getId());
 			stmt.execute();
@@ -97,6 +97,6 @@ public class ContatoDao {
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
-	}
+	}	
 
 }

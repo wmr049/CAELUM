@@ -1,6 +1,6 @@
 eclipse.preferences.version=1
-encoding//WebContent/adiciona-contato.jsp=UTF-8
-encoding//WebContent/bemvindo.jsp=UTF-8
-encoding//WebContent/digita-idade.jsp=UTF-8
-encoding//WebContent/lista-contatos-taglibs.jsp=UTF-8
-encoding//WebContent/rodape.jsp=UTF-8
+encoding//WebContent/WEB-INF/jsp/adiciona-contato.jsp=UTF-8
+encoding//WebContent/WEB-INF/jsp/bemvindo.jsp=UTF-8
+encoding//WebContent/WEB-INF/jsp/digita-idade.jsp=UTF-8
+encoding//WebContent/WEB-INF/jsp/lista-contatos-taglibs.jsp=UTF-8
+encoding//WebContent/WEB-INF/jsp/rodape.jsp=UTF-8
