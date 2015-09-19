@@ -2,6 +2,7 @@ package br.com.caelum.agenda.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -45,8 +46,9 @@ public class AdicionaContatoServlet extends HttpServlet {
 		contato.setEndereco(endereco);
 		contato.setEmail(email);
 		contato.setDataNascimento(dataNascimento);
-		// salva o contato
-		ContatoDao dao = new ContatoDao();
+
+		Connection connection = (Connection) request.getAttribute("conexao");	
+		ContatoDao dao = new ContatoDao(connection);
 		try {
 			dao.adiciona(contato);
 		} catch (SQLException e) {
@@ -54,7 +56,7 @@ public class AdicionaContatoServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		// imprime o nome do contato que foi adicionado
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/contato-adicionado.jsp");
-		rd.forward(request,response);
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/lista-contatos-taglibs.jsp");
+		rd.forward(request,response);			
 	}
 }

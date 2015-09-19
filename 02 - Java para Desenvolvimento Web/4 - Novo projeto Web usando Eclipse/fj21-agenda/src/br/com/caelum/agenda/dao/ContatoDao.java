@@ -15,10 +15,37 @@ import br.com.caelum.agenda.modelo.Contato;
 public class ContatoDao {
 	private Connection connection;
 
-	public ContatoDao() {
-		this.connection = new ConnectionFactory().getConnection();
+	public ContatoDao(Connection connection) {
+		this.connection = connection;
 	}
-
+	public Contato getContato(Contato contatoJSP) {
+		try {
+			Contato contato = new Contato();
+			PreparedStatement stmt = this.connection
+					.prepareStatement("select * from contatos where id=?");
+			stmt.setLong(1, contatoJSP.getId());
+			ResultSet rs = stmt.executeQuery();
+			
+				rs.first();
+				// criando o objeto Contato				
+				contato.setId(rs.getLong("id"));
+				contato.setNome(rs.getString("nome"));
+				contato.setEmail(rs.getString("email"));
+				contato.setEndereco(rs.getString("endereco"));
+				
+				// montando a data através do Calendar
+				Calendar data = Calendar.getInstance();
+				data.setTime(rs.getDate("dataNascimento"));
+				contato.setDataNascimento(data);
+			
+				rs.close();
+				stmt.close();
+			return contato;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
 	public List<Contato> getLista() {
 		try {
 			List<Contato> contatos = new ArrayList<Contato>();

@@ -26,13 +26,13 @@
 				<td><fmt:formatDate value="${contato.dataNascimento.time}"
 						pattern="dd/MM/yyyy" /></td>
 				<td><a href="mvc?logica=RemoveContatoLogic&id=${contato.id}"> <img src="<c:url value="/imagens/excluir.png"/>" /></a>
-				<td><a href="mvc?logica=AlteraContatoLogic&id=${contato.id}"> <img src="<c:url value="/imagens/alterar.png"/>" /></a>
-				<td><a href="mvc?logica=AdicionaContatoLogic&id=${contato.id}"> <img src="<c:url value="/imagens/salvar.png"/>" /></a>
+				<td><a href="mvc?logica=AlteraContatoLogic&id=${contato.id}"> <img src="<c:url value="/imagens/alterar.png"/>" /></a>				
 				
 				</td>
 			</tr>
 		</c:forEach>
 	</table>
+	<a href="mvc?logica=AdicionaContatoLogic"> <img src="<c:url value="/imagens/salvar.png"/>" />
 	<c:import url="/WEB-INF/jsp/rodape.jsp" />
 </body>
 </html>
