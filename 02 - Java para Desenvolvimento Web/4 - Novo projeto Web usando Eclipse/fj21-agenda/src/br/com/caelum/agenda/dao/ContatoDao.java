@@ -18,6 +18,11 @@ public class ContatoDao {
 	public ContatoDao(Connection connection) {
 		this.connection = connection;
 	}
+	
+	public ContatoDao() {
+		this.connection = connection;
+	}
+	
 	public Contato getContato(Contato contatoJSP) {
 		try {
 			Contato contato = new Contato();

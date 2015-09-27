@@ -6,10 +6,8 @@
 <title>Tarefas</title>
 </head>
 <body>
-	<a href="novaTarefa">Criar nova tarefa</a>
-	<br />
-	<br />
 
+	<c:import url="/WEB-INF/views/tarefa/cabecalho.jsp" />
 	<table>
 		<tr>
 			<th>Id</th>
@@ -35,6 +33,10 @@
 			</tr>
 		</c:forEach>
 	</table>
-
+	
+	<br />
+	<br />
+	<a href="novaTarefa">Criar nova tarefa</a>
+	<c:import url="/WEB-INF/views/tarefa/rodape.jsp" />
 </body>
 </html>
