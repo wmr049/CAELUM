@@ -1,5 +1,6 @@
 package br.com.caelum.tarefas.controller;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -43,7 +44,8 @@ public class TarefasController {
 		dao.remove(tarefa);
 		return "redirect:listaTarefas";
 	}
-
+	
+	
 	@RequestMapping("mostraTarefa")
 	public String mostra(Long id, Model model) {
 		JdbcTarefaDao dao = new JdbcTarefaDao();
@@ -56,5 +58,19 @@ public class TarefasController {
 		JdbcTarefaDao dao = new JdbcTarefaDao();
 		dao.altera(tarefa);
 		return "redirect:listaTarefas";
+	}
+	
+	@RequestMapping("finalizaTarefa")
+	private void finaliza(Long id, HttpServletResponse response) {
+		JdbcTarefaDao dao = new JdbcTarefaDao();
+		dao.finaliza(id);
+		response.setStatus(200);
+	}
+	
+	@RequestMapping("removeTarefaAjax")
+	public void removeAjax(Long id, HttpServletResponse response) {
+		JdbcTarefaDao dao = new JdbcTarefaDao();
+		dao.removeId(id);
+		response.setStatus(200);;
 	}
 }

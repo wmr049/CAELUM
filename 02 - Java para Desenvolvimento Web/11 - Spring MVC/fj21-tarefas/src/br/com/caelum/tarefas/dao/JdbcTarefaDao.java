@@ -48,6 +48,7 @@ public class JdbcTarefaDao {
 			throw new RuntimeException(e);
 		}
 	}
+		
 
 	public void altera(Tarefa tarefa) {
 		String sql = "update tarefa set descricao = ?, finalizado = ?, dataFinalizacao = ? where id = ?";
@@ -128,6 +129,23 @@ public class JdbcTarefaDao {
 			stmt.setBoolean(1, true);
 			stmt.setDate(2, new Date(Calendar.getInstance().getTimeInMillis()));
 			stmt.setLong(3, id);
+			stmt.execute();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public void removeId(Long id) {
+
+		if (id == null) {
+			throw new IllegalStateException("Id da tarefa não deve ser nula.");
+		}
+
+		String sql = "delete from tarefa where id = ?";
+		PreparedStatement stmt;
+		try {
+			stmt = connection.prepareStatement(sql);
+			stmt.setLong(1, id);
 			stmt.execute();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
