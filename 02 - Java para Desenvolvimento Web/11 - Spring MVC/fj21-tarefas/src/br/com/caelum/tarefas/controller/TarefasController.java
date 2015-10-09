@@ -61,10 +61,11 @@ public class TarefasController {
 	}
 	
 	@RequestMapping("finalizaTarefa")
-	private void finaliza(Long id, HttpServletResponse response) {
+	public String finaliza(Long id, Model model) {
 		JdbcTarefaDao dao = new JdbcTarefaDao();
 		dao.finaliza(id);
-		response.setStatus(200);
+		model.addAttribute("tarefa",dao.buscaPorId(id));
+		return "tarefa/finalizada";
 	}
 	
 	@RequestMapping("removeTarefaAjax")
