@@ -14,7 +14,7 @@ public class CarregaClienteWhere {
 		EntityManagerFactory factory = Persistence
 				.createEntityManagerFactory("clientes");
 		EntityManager manager = factory.createEntityManager();
-		List<Cliente> lista = manager.createQuery("select t from cliente as t where t.id = 2")
+		List<Cliente> lista = manager.createQuery("select t from Cliente as t")
 				.getResultList();
 		
 		for(Cliente cliente : lista){

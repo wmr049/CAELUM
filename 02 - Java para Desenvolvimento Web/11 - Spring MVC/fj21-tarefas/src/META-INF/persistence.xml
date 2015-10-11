@@ -6,6 +6,8 @@
 	<persistence-unit name="clientes">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>br.com.caelum.tarefas.modelo.Cliente</class>
+		<class>br.com.caelum.tarefas.modelo.Tarefa</class>
+		<class>br.com.caelum.tarefas.modelo.Usuario</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/fj21" />

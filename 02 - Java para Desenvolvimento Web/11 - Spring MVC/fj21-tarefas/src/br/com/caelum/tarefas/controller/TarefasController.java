@@ -5,23 +5,21 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import br.com.caelum.tarefas.dao.JdbcTarefaDao;
+import br.com.caelum.tarefas.dao.TarefaDao;
 import br.com.caelum.tarefas.modelo.Tarefa;
 
+@Transactional
 @Controller
 public class TarefasController {
 
-	private JdbcTarefaDao dao;
-
 	@Autowired
-	public TarefasController(JdbcTarefaDao dao) {
-		this.dao = dao;
-	}
-
+	TarefaDao dao;
+	
 	@RequestMapping("novaTarefa")
 	public String form() {
 		return "tarefa/formulario";
@@ -67,12 +65,5 @@ public class TarefasController {
 		dao.finaliza(id);
 		model.addAttribute("tarefa", dao.buscaPorId(id));
 		return "tarefa/finalizada";
-	}
-
-	@RequestMapping("removeTarefaAjax")
-	public void removeAjax(Long id, HttpServletResponse response) {		
-		dao.removeId(id);
-		response.setStatus(200);
-		;
 	}
 }
