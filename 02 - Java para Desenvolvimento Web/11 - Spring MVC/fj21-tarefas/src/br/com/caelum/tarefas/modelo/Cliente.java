@@ -15,8 +15,35 @@ public class Cliente {
 	@GeneratedValue
 	private Long id;
 	
+	@GeneratedValue
+	private String nome;
+	
 	@Temporal(TemporalType.DATE)
 	private Calendar dataCriacao;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Calendar getDataCriacao() {
+		return dataCriacao;
+	}
+
+	public void setDataCriacao(Calendar dataCriacao) {
+		this.dataCriacao = dataCriacao;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 	
 
 }
